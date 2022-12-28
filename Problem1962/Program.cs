@@ -20,13 +20,17 @@ public abstract class Program
     private static int MinStoneSum(int[] piles, int k)
     {
         Array.Sort(piles);
-        var sortedSet = new SortedSet<int>(piles);
 
         for (var i = 0; i < k; i++)
         {
-            var removedStones = RemoveStones(sortedSet.Max);
-            sortedSet.Remove(sortedSet.Max);
-            sortedSet.Add(removedStones);
+            var largestPile = piles[^1];
+            var halvedPile = RemoveStones(largestPile);
+
+            
+            for (var j = 0; j < piles.Length; j++)
+            {
+                
+            }
         }
 
         var totalStones = CalculateTotalStones(piles);
