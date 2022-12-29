@@ -1,6 +1,4 @@
-﻿// Solved, needs optimizing.
-
-namespace Problem1962;
+﻿namespace Problem1962;
 
 public abstract class Program
 {
@@ -37,7 +35,11 @@ public abstract class Program
             var largestPile = list[^1];
             var halvedPile = RemoveStones(largestPile);
 
-            var index = list.FindIndex(x => x >= halvedPile);
+            var index = list.BinarySearch(halvedPile);
+            if (index < 0)
+            {
+                index = ~index;
+            }
             list.Insert(index, halvedPile);
             list.RemoveAt(list.Count - 1);
         }
